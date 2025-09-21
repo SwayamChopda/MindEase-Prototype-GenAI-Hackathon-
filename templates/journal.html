@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="card centered">
+  <h2>Your Journal</h2>
+  <form method="post">
+    <textarea name="entry" class="note" placeholder="Write your thoughts..."></textarea>
+    <div class="row">
+      <button class="btn large filled" type="submit">Save</button>
+      <button class="btn outline" type="button" onclick="location.href='{{ url_for('dashboard') }}'">Discard</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

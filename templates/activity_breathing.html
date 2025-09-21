@@ -1,0 +1,22 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="card centered">
+  <h2>Breathing Exercise</h2>
+  <div class="circle"></div>
+  <p id="instr">Ready? Click Start to begin.</p>
+  <form method="post">
+    <button class="btn large filled" type="submit">Complete</button>
+  </form>
+  <a href="{{ url_for('activities') }}">Back</a>
+</div>
+<script>
+let steps = ["Inhale","Hold","Exhale"];
+function start(){
+  let i=0;
+  document.getElementById('instr').innerText = steps[i];
+  const iv = setInterval(()=>{ i=(i+1)%3; document.getElementById('instr').innerText=steps[i];}, 4000);
+  setTimeout(()=>clearInterval(iv),120000);
+}
+</script>
+{% endblock %}

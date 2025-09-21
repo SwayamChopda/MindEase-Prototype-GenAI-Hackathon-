@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="card centered">
+  <h2>How are you feeling today?</h2>
+  <form method="post">
+    <div class="emoji-row">
+      <button class="emoji" onclick="sel('happy'); return false;">😊</button>
+      <button class="emoji" onclick="sel('neutral'); return false;">😐</button>
+      <button class="emoji" onclick="sel('sad'); return false;">☹️</button>
+      <button class="emoji" onclick="sel('stressed'); return false;">😰</button>
+    </div>
+    <input type="hidden" id="moodInput" name="mood" value="neutral">
+    <textarea name="note" placeholder="Write your thoughts..." class="note"></textarea>
+    <div style="text-align:center">
+      <button class="btn large filled" type="submit">Next</button>
+    </div>
+  </form>
+</div>
+<script>
+function sel(m){
+  document.getElementById('moodInput').value = m;
+}
+</script>
+{% endblock %}

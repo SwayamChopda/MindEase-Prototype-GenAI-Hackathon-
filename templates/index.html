@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="card left-card">
+  <div class="logo">🍃</div>
+  <h2>Mind Ease IN</h2>
+  <p class="sub">Your Mental Wellness Companion</p>
+  <div class="spacer"></div>
+  <a class="btn large" href="{{ url_for('mood_check') }}">Sign In</a>
+  <a class="btn large outline" href="{{ url_for('mood_check') }}">Sign Up</a>
+</div>
+
+<div class="card tall center-card">
+  <h2>How are you feeling today?</h2>
+  <div class="emoji-row">
+    <button class="emoji" onclick="selectMood('happy')">😊</button>
+    <button class="emoji" onclick="selectMood('neutral')">😐</button>
+    <button class="emoji" onclick="selectMood('sad')">☹️</button>
+    <button class="emoji" onclick="selectMood('stressed')">😰</button>
+  </div>
+  <form id="moodForm" method="post" action="{{ url_for('mood_check') }}">
+    <input type="hidden" name="mood" id="moodInput" value="neutral">
+    <textarea name="note" placeholder="Write your thoughts..." class="note"></textarea>
+    <div style="text-align:center">
+      <button class="btn large filled" type="submit">Next</button>
+    </div>
+  </form>
+</div>
+
+<div class="card right-card">
+  <h2>Choose an Activity</h2>
+  <div class="activity-list">
+    <a class="activity-item" href="{{ url_for('activity', name='meditation') }}"><div class="icon">🧘</div><div>Meditation</div></a>
+    <a class="activity-item" href="{{ url_for('activity', name='breathing') }}"><div class="icon">🌬️</div><div>Breathing</div></a>
+    <a class="activity-item" href="{{ url_for('journal') }}"><div class="icon">📄</div><div>Journaling</div></a>
+  </div>
+  <a class="back" href="/">← Back</a>
+</div>
+<script>
+function selectMood(m){
+  document.getElementById("moodInput").value = m;
+  // visual feedback
+  const buttons = document.querySelectorAll('.emoji');
+  buttons.forEach(b=> b.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+}
+</script>
+{% endblock %}

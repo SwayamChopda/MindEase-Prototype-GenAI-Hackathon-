@@ -1,0 +1,60 @@
+
+:root{
+  --bg:#f7f6f5;
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#cfcfcf;
+  --shadow: rgba(15,23,42,0.06);
+  --radius:18px;
+  --padding:22px;
+}
+body{font-family: "Poppins", Arial, sans-serif; background:var(--bg); margin:0; color:#222;}
+.page{max-width:1100px;margin:24px auto;}
+.header{display:none;}
+.main{display:grid; grid-template-columns: 1fr 1fr 1fr; gap:20px; align-items:start;}
+
+/* card */
+.card{background:var(--card); border-radius:20px; padding:20px; box-shadow: 0 6px 18px var(--shadow); border:1px solid var(--accent);}
+.left-card{height:520px; text-align:center; display:flex; flex-direction:column; justify-content:space-between; align-items:center;}
+.center-card{height:520px; text-align:center; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;}
+.right-card{height:520px;}
+.tall{height:520px;}
+.small{height:360px;}
+.centered{max-width:520px;margin:0 auto;text-align:center;}
+.logo{font-size:48px; opacity:0.8;}
+.sub{color:var(--muted);}
+
+/* emojis row */
+.emoji-row{display:flex; gap:18px; justify-content:center; margin:18px 0;}
+.emoji{width:64px;height:64px;border-radius:14px;border:1px solid var(--accent); background:white; font-size:28px; cursor:pointer; display:flex; align-items:center; justify-content:center;}
+.emoji.selected{background:#eee;}
+
+/* buttons */
+.btn{display:inline-block;padding:10px 18px;border-radius:12px;border:1px solid var(--accent); background:transparent; cursor:pointer; text-decoration:none; color:#333;}
+.btn.large{padding:14px 26px; font-weight:600; border-radius:14px;}
+.btn.filled{background:#d9d9d9; box-shadow: inset 0 -3px 0 rgba(0,0,0,0.06);}
+.btn.outline{background:transparent;}
+
+/* note area */
+.note{width:100%; min-height:120px; border-radius:12px; border:1px solid var(--accent); padding:12px; resize:none;}
+
+/* activity items */
+.activity-list{display:flex; flex-direction:column; gap:12px; margin-top:14px;}
+.activity-item{display:flex; gap:12px; align-items:center; padding:14px; border-radius:14px; border:1px solid var(--accent); text-decoration:none; color:#222; background:#fff;}
+.activity-item .icon{font-size:24px; width:48px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; border:1px solid var(--accent);}
+
+/* grid for bottom row */
+.grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:20px;}
+.timer{font-size:36px; font-weight:700; text-align:left; margin:10px 0;}
+.notecard{border:1px solid var(--accent); padding:12px; border-radius:12px; text-align:left; background:#fff;}
+.row{display:flex; gap:12px; justify-content:center; margin-top:12px;}
+.insightcard{border:1px solid var(--accent); padding:12px; border-radius:12px; margin-top:12px; background:#fff; text-align:left;}
+
+/* circle for breathing */
+.circle{width:140px; height:140px; border-radius:50%; background:linear-gradient(135deg,#fff,#f0f0f0); margin:14px auto; border:1px solid var(--accent);}
+
+/* responsiveness */
+@media (max-width:900px){
+  .main{grid-template-columns:1fr; padding:12px;}
+  .grid{grid-template-columns:1fr;}
+}

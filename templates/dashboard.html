@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="card centered">
+  <h2>Dashboard</h2>
+  <canvas id="moodChart" width="400" height="150"></canvas>
+  <div class="insightcard">
+    <p>Streaks: 5 days</p>
+    <p>Completed Activities: {{ completed }}</p>
+  </div>
+  <a class="btn large filled" href="{{ url_for('activities') }}">Back to Activities</a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const labels = {{ labels|tojson }};
+const values = {{ values|tojson }};
+const ctx = document.getElementById('moodChart').getContext('2d');
+new Chart(ctx, {
+  type:'line',
+  data:{ labels: labels.length ? labels : ['No Data'], datasets:[{label:'Mood Score', data: values.length?values:[0], borderColor:'#333', fill:false}]},
+  options:{ scales:{ y:{ min:-5, max:5 } } }
+});
+</script>
+{% endblock %}

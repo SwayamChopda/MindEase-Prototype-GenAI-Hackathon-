@@ -1,0 +1,50 @@
+
+{% extends "base.html" %}
+{% block content %}
+<div class="grid">
+  <div class="card small">
+    <h3>Meditation: Relax Mind</h3>
+    <div class="timer">05:00</div>
+    <div class="notecard">
+      <p><b>Step 1:</b> Sit comfortably</p>
+      <p><b>Step 2:</b> Close your eyes</p>
+    </div>
+    <form method="post" action="{{ url_for('activity', name='meditation') }}">
+      <button class="btn large filled" type="submit">Start</button>
+    </form>
+  </div>
+
+  <div class="card small">
+    <h3>Your Journal</h3>
+    <form method="get" action="{{ url_for('journal') }}">
+      <textarea class="note" placeholder="Write your thoughts..."></textarea>
+      <div class="row">
+        <button class="btn" type="button" onclick="location.href='{{ url_for('journal') }}'">Save</button>
+        <button class="btn outline" type="button" onclick="location.href='{{ url_for('dashboard') }}'">Discard</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card small">
+    <h3>Dashboard</h3>
+    <canvas id="moodChart" width="300" height="120"></canvas>
+    <div class="insightcard">
+      <p>Streaks: 5 days</p>
+      <p>Completed Activities: {{ completed }}</p>
+    </div>
+    <a class="btn large filled" href="{{ url_for('dashboard') }}">View Insights</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('moodChart')?.getContext('2d');
+if(ctx){
+  new Chart(ctx, {
+    type:'line',
+    data:{ labels:['Day1','Day2','Day3','Day4','Day5'], datasets:[{label:'Mood', data:[-1,1,2,0,1], borderColor:'#333', fill:false}]},
+    options:{ scales:{ y:{ min:-5, max:5 } } }
+  });
+}
+</script>
+{% endblock %}
